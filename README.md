@@ -44,14 +44,14 @@ Genome Indexing with hisat2.\
 Data Preprocessing with fastp for quality control and hisat2 for RNA-Seq read alignment.\
 Gene Expression Quantification using featureCounts.\
 
-**#Input**\
+**# Input**\
 **$1:** Directory containing sample fastq files (paired-end fastq.gz files).\
 **$2:** Directory where output files will be stored.\
 **$3:** Reference genome in .fna format (FASTA format).\
 **$4:** Directory containing eggNOG reference files.\
 
 
-**# Output**
+**# Output**\
 **$2/anno/:** Directory containing annotation results, including functional annotation and CDS prediction.\
 **$2/hisat2_index/:** Directory containing genome index files for hisat2.\
 **$2/<sample>/:** Directories for each sample containing cleaned fastq files and corresponding aligned BAM files.\
@@ -65,8 +65,48 @@ Gene Expression Quantification using featureCounts.\
 
 
 
+# In Rstudio
+Before running the pipeline, you need to install and load the following packages
 
-
+library(clusterProfiler)  
+library(enrichplot)  
+library(ggplot2)  
+library(data.table)  
+library(GO.db)  
+library(DESeq2)  
+library(pathview)  
+library(GOSemSim)  
+library(AnnotationDbi)  
+library(org.Osativa.eg.db)  
+library(rtracklayer)  
+library(Rsubread)  
+library(pheatmap)  
+library(RColorBrewer)  
+library(geneplotter)  
+library(gplots)  
+library(jsonlite)  
+library(purrr)  
+library(RCurl)  
+library(stringr)
+library(dplyr)
+library(DOSE)
+library(enrichplot)
+library(globaltest)
+library(factoextra)
+library(FactoMineR)
+library(variancePartition)
+library(EnhancedVolcano)
+library(tidyr)
+library(pheatmap)
+library(gridExtra)
+library(lme4)
+library(variancePartition)
+library(Matrix)
+library(colorRamps)
+library(lmerTest)
+library(tibble)
+library(tidyverse)
+library(tidyquant)
 
 
 
