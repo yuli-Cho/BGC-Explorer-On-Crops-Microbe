@@ -1,6 +1,6 @@
 ### BGC-Explorer: Comprehensive BGC Gene Analysis on crops & Microbe
 
-## Overview\
+## Overview
 **BGC-Explorer** is a bioinformatics pipeline designed to perform genome-wide analysis of **biosynthetic gene clusters (BGCs)** using the **deepbgc** tool. The project integrates genome-wide annotation with **eggNOG** and combines publicly available transcriptome data to explore the functional response of BGCs to various treatments.
 
 ## Features
@@ -10,8 +10,8 @@
 **Gene Interaction Analysis:** Investigates the potential interactions between BGCs, exploring whether they influence each other.\
 **Gene Family Exploration:** Identifies key genes within BGC families and assesses their importance in regulating biosynthesis.\
 
-## Getting Started\
-# Prerequisites\
+## Getting Started
+# Prerequisites
 Before running the pipeline, ensure you have the following installed:\
 **deepbgc**\
 **eggNOG**\
@@ -51,7 +51,7 @@ Gene Expression Quantification using featureCounts.\
 **$4:** Directory containing eggNOG reference files.\
 
 
-**# Output**\
+**# Output**
 **$2/anno/:** Directory containing annotation results, including functional annotation and CDS prediction.\
 **$2/hisat2_index/:** Directory containing genome index files for hisat2.\
 **$2/<sample>/:** Directories for each sample containing cleaned fastq files and corresponding aligned BAM files.\
