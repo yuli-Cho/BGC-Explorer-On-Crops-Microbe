@@ -30,12 +30,12 @@ Before running the pipeline, ensure you have the following installed:\
 `wget http://eggnog5.embl.de/download/emapperdb-5.0.2/eggnog.taxa.tar.gz`\
 `wget http://eggnog5.embl.de/download/emapperdb-5.0.2/eggnog_proteins.dmnd.gz`\
 `wget http://eggnog5.embl.de/download/emapperdb-5.0.2/mmseqs.tar.gz`\
-`wget http://eggnog5.embl.de/download/emapperdb-5.0.2/pfam.tar.gz`\
+`wget http://eggnog5.embl.de/download/emapperdb-5.0.2/pfam.tar.gz`
 
 2. Please download genome.fa file and species transcriptome data first\
 
 
-**1. Functional Annotation and RNA-seq analysis:**\
+**1. Functional Annotation and RNA-seq analysis:**
 
 This part performs the following steps:
 
@@ -44,7 +44,7 @@ Genome Indexing with hisat2.\
 Data Preprocessing with fastp for quality control and hisat2 for RNA-Seq read alignment.\
 Gene Expression Quantification using featureCounts.\
 
-**#Input**
+**#Input**\
 **$1:** Directory containing sample fastq files (paired-end fastq.gz files).\
 **$2:** Directory where output files will be stored.\
 **$3:** Reference genome in .fna format (FASTA format).\
