@@ -1,4 +1,4 @@
-### BGC-Explorer: Comprehensive BGC Gene Analysis on crops & Microbe
+# BGC-Explorer: Comprehensive BGC Gene Analysis on crops & Microbe
 
 ## Overview
 **BGC-Explorer** is a bioinformatics pipeline designed to perform genome-wide analysis of **biosynthetic gene clusters (BGCs)** using the **deepbgc** tool. The project integrates genome-wide annotation with **eggNOG** and combines publicly available transcriptome data to explore the functional response of BGCs to various treatments.
@@ -11,8 +11,9 @@
 **Gene Family Exploration:** Identifies key genes within BGC families and assesses their importance in regulating biosynthesis.\
 
 ## Getting Started
-# Prerequisites
+### Prerequisites
 Before running the pipeline, ensure you have the following installed:\
+
 **deepbgc**\
 **eggNOG**\
 **Python 3.6**\
@@ -21,10 +22,10 @@ Before running the pipeline, ensure you have the following installed:\
 **samtools** (for BAM file processing)\
 **featureCounts** (for gene counting)\
 **eggNOG-mapper** (for functional annotation)\
-**seqkit** (for sequence manipulation)\
+**seqkit** (for sequence manipulation)  
 
 **##Usage**
-# In shell
+## In shell
 1. Please download the eggNOG database before you start and save it in the data folder under the eggnog-mapper software directory.\
 `wget http://eggnog5.embl.de/download/emapperdb-5.0.2/eggnog.db.gz`\
 `wget http://eggnog5.embl.de/download/emapperdb-5.0.2/eggnog.taxa.tar.gz`\
@@ -44,14 +45,14 @@ Genome Indexing with hisat2.\
 Data Preprocessing with fastp for quality control and hisat2 for RNA-Seq read alignment.\
 Gene Expression Quantification using featureCounts.  
 
-**# Input**  
+## Input  
 **$1:** Directory containing sample fastq files (paired-end fastq.gz files).\
 **$2:** Directory where output files will be stored.\
 **$3:** Reference genome in .fna format (FASTA format).\
 **$4:** Directory containing eggNOG reference files.  
 
 
-**# Output**  
+## Output  
 **$2/anno/:** Directory containing annotation results, including functional annotation and CDS prediction.\
 **$2/hisat2_index/:** Directory containing genome index files for hisat2.\
 **$2/<sample>/:** Directories for each sample containing cleaned fastq files and corresponding aligned BAM files.\
@@ -65,49 +66,64 @@ Gene Expression Quantification using featureCounts.
 
 
 
-# In Rstudio
+## In Rstudio
 Before running the pipeline, you need to install and load the following packages：  
 
-`library(clusterProfiler)  `
-`library(enrichplot)  `
-`library(ggplot2)  `
-`library(data.table)  `
-`library(GO.db)  `
-`library(DESeq2)  ` 
-`library(pathview)  `
-`library(GOSemSim)  `
-`library(AnnotationDbi)  `
-`library(org.Osativa.eg.db)  `
-`library(rtracklayer)  `
-`library(Rsubread)  `
-`library(pheatmap)  `
-`library(RColorBrewer)  `
-`library(geneplotter)  `
-`library(gplots)  `
-`library(jsonlite)  `
-`library(purrr)  `
-`library(RCurl)  `
-`library(stringr)  `
-`library(dplyr)  `
-`library(DOSE)  `
-`library(enrichplot)  `
-`library(globaltest)  `
-`library(factoextra)  `
-`library(FactoMineR)  `
-`library(variancePartition)  `
-`library(EnhancedVolcano)  `
-`library(tidyr)  `
-`library(pheatmap)  `
-`library(gridExtra)  `
-`library(lme4)  `
-`library(variancePartition)  `
-`library(Matrix)  `
-`library(colorRamps)  `
-`library(lmerTest)  `
-`library(tibble)  `
-`library(tidyverse)  `
-`library(tidyquant)  `
-`
+## Required Libraries
+library(clusterProfiler)    # For functional enrichment analysis
+library(enrichplot)          # For visualization of enrichment results
+library(ggplot2)             # For data visualization
+library(data.table)          # For fast data manipulation
+library(GO.db)               # For Gene Ontology annotations
+library(DESeq2)              # For differential expression analysis
+library(pathview)            # For pathway visualization
+library(GOSemSim)            # For Gene Ontology similarity analysis
+library(AnnotationDbi)       # For database interfacing (annotations)
+library(org.Osativa.eg.db)   # For rice (Oryza sativa) annotations
+library(rtracklayer)         # For working with genomic data (e.g., tracks)
+library(Rsubread)            # For read alignment and counting
+library(pheatmap)            # For heatmap visualizations
+library(RColorBrewer)        # For color palettes
+library(geneplotter)         # For gene expression plots
+library(gplots)              # For additional plotting functionality
+library(jsonlite)            # For working with JSON data
+library(purrr)               # For functional programming (map, reduce, etc.)
+library(RCurl)               # For working with URLs and HTTP requests
+library(stringr)             # For string manipulation
+library(dplyr)               # For data manipulation
+library(DOSE)                # For Disease Ontology Semantic Enrichment
+library(globaltest)          # For global test of differential expression
+library(factoextra)          # For visualizing clustering results
+library(FactoMineR)          # For multivariate data analysis
+library(variancePartition)   # For variance partitioning in DE analysis
+library(EnhancedVolcano)     # For volcano plots of differential expression
+library(tidyr)               # For data tidying
+library(gridExtra)           # For additional grid-based plotting functions
+library(lme4)                # For linear mixed-effects models
+library(Matrix)              # For sparse matrices
+library(colorRamps)          # For color ramp generation
+library(lmerTest)            # For mixed-effects models with p-value calculation
+library(tibble)              # For modern data frames (tibbles)
+library(tidyverse)           # For data manipulation and visualization (includes ggplot2, dplyr, tidyr, etc.)
+library(tidyquant)           # For financial analysis and time series
+
+
+## Required Files
+The following files should be exported from the shell and imported into R:
+
+**all_counts.tsv:** Raw count data for genes/features, used for differential expression analysis.  
+**eggnog.emapper.decorated.gff:** GFF file with EggNOG orthology mapping and functional annotations.  
+**eggnog.emapper.genepred.gff:** GFF file for gene predictions based on EggNOG mapping.  
+**eggnog.emapper.annotations:** Functional annotations from EggNOG.  
+**eggnog.anno:** Additional EggNOG annotations.  
+**geneid_match.tab:** Gene IDs and corresponding annotations/mappings.  
+**all_gbk_2.bgc.tsv:** Data on biosynthetic gene clusters (BGCs).  
+
+
+
+
+
+
 
 
 
