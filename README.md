@@ -68,46 +68,45 @@ Gene Expression Quantification using featureCounts.
 # In Rstudio
 Before running the pipeline, you need to install and load the following packages：  
 
-`
-library(clusterProfiler)  
-library(enrichplot)  
-library(ggplot2)  
-library(data.table)  
-library(GO.db)  
-library(DESeq2)  
-library(pathview)  
-library(GOSemSim)  
-library(AnnotationDbi)  
-library(org.Osativa.eg.db)  
-library(rtracklayer)  
-library(Rsubread)  
-library(pheatmap)  
-library(RColorBrewer)  
-library(geneplotter)  
-library(gplots)  
-library(jsonlite)  
-library(purrr)  
-library(RCurl)  
-library(stringr)  
-library(dplyr)  
-library(DOSE)  
-library(enrichplot)  
-library(globaltest)  
-library(factoextra)  
-library(FactoMineR)  
-library(variancePartition)  
-library(EnhancedVolcano)  
-library(tidyr)  
-library(pheatmap)  
-library(gridExtra)  
-library(lme4)  
-library(variancePartition)  
-library(Matrix)  
-library(colorRamps)  
-library(lmerTest)  
-library(tibble)  
-library(tidyverse)  
-library(tidyquant)  
+`library(clusterProfiler)  `
+`library(enrichplot)  `
+`library(ggplot2)  `
+`library(data.table)  `
+`library(GO.db)  `
+`library(DESeq2)  ` 
+`library(pathview)  `
+`library(GOSemSim)  `
+`library(AnnotationDbi)  `
+`library(org.Osativa.eg.db)  `
+`library(rtracklayer)  `
+`library(Rsubread)  `
+`library(pheatmap)  `
+`library(RColorBrewer)  `
+`library(geneplotter)  `
+`library(gplots)  `
+`library(jsonlite)  `
+`library(purrr)  `
+`library(RCurl)  `
+`library(stringr)  `
+`library(dplyr)  `
+`library(DOSE)  `
+`library(enrichplot)  `
+`library(globaltest)  `
+`library(factoextra)  `
+`library(FactoMineR)  `
+`library(variancePartition)  `
+`library(EnhancedVolcano)  `
+`library(tidyr)  `
+`library(pheatmap)  `
+`library(gridExtra)  `
+`library(lme4)  `
+`library(variancePartition)  `
+`library(Matrix)  `
+`library(colorRamps)  `
+`library(lmerTest)  `
+`library(tibble)  `
+`library(tidyverse)  `
+`library(tidyquant)  `
 `
 
 
