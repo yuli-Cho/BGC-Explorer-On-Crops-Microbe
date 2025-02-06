@@ -351,6 +351,35 @@ for (pair in condition_pairs) {
 
 
 
+## Principle of Globaltest
+Globaltest is a gene set analysis method that evaluates whether a predefined set of genes is associated with a particular phenotype or condition. Unlike traditional differential expression analysis, which examines individual genes, Globaltest assesses the collective behavior of a gene set, such as genes within a biosynthetic gene cluster (BGC).
+
+The method is based on a random effects model, where gene expression values within a set are regressed against the phenotype of interest. Instead of testing each gene separately, Globaltest considers the correlation structure among genes and determines whether the variation in gene expression is significantly linked to the condition. The null hypothesis assumes that the genes in the set have no systematic association with the phenotype, and the statistical significance is determined using likelihood ratio tests.
+
+From a biological perspective, Globaltest is particularly useful for identifying coordinated gene regulation in pathways or clusters, such as BGCs in microbial or plant genomes. Since BGCs encode enzymes responsible for producing secondary metabolites, their expression is often co-regulated under specific conditions. By applying Globaltest, researchers can detect whether the entire cluster is differentially regulated after treatment, rather than relying on the expression changes of individual genes. This holistic approach provides insights into the functional relevance of BGCs under different environmental or experimental conditions.
+
+
+```
+> result_table
+                          BGC_id        Gene      p_value significance
+                          <char>      <char>        <num>       <char>
+    1: Chr10_17545673-17877467.1     Chr10_0 0.7517224700           ns
+    2: Chr10_17545673-17877467.1 Chr10_10018 0.6547764784           ns
+    3: Chr10_17545673-17877467.1 Chr10_10333 0.0767277593           ns
+    4: Chr10_17545673-17877467.1 Chr10_10405 0.7172450233           ns
+    5: Chr10_17545673-17877467.1 Chr10_10612 0.0002512284  significant
+```
+
+
+## GENIE3-Based Regulatory Network Analysis for BGCs
+Secondary metabolite biosynthetic gene clusters (BGCs) play a crucial role in producing bioactive compounds, including antibiotics, anticancer agents, and plant defense molecules. However, understanding how genes within a BGC are regulated remains a challenge. This project utilizes GENIE3, a machine-learning-based approach, to infer gene regulatory networks within BGCs based on expression data.
+
+By applying GENIE3, we can systematically predict key regulatory genes within a BGC, revealing potential transcriptional control mechanisms. This approach allows researchers to identify critical regulatory hubs that may govern the production of secondary metabolites, providing a foundation for rational metabolic engineering and functional validation.
+
+Why GENIE3?
+GENIE3 reconstructs regulatory networks by predicting directed interactions between genes using a Random Forest-based feature selection method. Unlike traditional correlation-based methods, which only capture general co-expression patterns, GENIE3 identifies potential causal relationships between transcription factors and their target genes.
+
+
 
 
 
