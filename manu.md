@@ -25,3 +25,22 @@ Output:
 The script produces a GenBank file (.gbk), where each chromosome has its corresponding mRNA and CDS features annotated.  
 The output file will be saved with the name specified as <output.gbk>.  
 
+
+Next, we use DeepBGC to predict biosynthetic gene clusters (BGCs) and use deep learning models to identify BGCs from genomic data. The input is the GenBank format file (all.gbk) generated in the previous step, which contains the genomic data to be used for DeepBGC pipeline operations.  
+
+```
+deepbgc pipeline <input.gbk> -o <output_directory> > <log_file> 2>&1
+
+example:
+nohup deepbgc pipeline ./ref/all.gbk  -o your/output/path/ > .your/output/log_files/deepbgc.log 2>&1 &
+
+```
+
+
+
+
+
+
+
+
+
