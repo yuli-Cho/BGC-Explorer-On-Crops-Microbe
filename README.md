@@ -10,33 +10,7 @@
 **Gene Interaction Analysis:** Investigates the potential interactions between BGCs, exploring whether they influence each other.  
 **Gene Family Exploration:** Identifies key genes within BGC families and assesses their importance in regulating biosynthesis.  
 
-## Getting Started
-### Prerequisites
-Before running the pipeline, ensure you have the following installed:  
 
-**deepbgc**\
-**eggNOG**\
-**Python 3.6**\
-**fastp** (for quality control)\
-**hisat2** (for alignment)\
-**samtools** (for BAM file processing)\
-**featureCounts** (for gene counting)\
-**eggNOG-mapper** (for functional annotation)\
-**seqkit** (for sequence manipulation)  
-
-**##Usage**
-## In shell
-1. Please download the eggNOG database before you start and save it in the data folder under the eggnog-mapper software directory.\
-
-```
-wget http://eggnog5.embl.de/download/emapperdb-5.0.2/eggnog.db.gz
-wget http://eggnog5.embl.de/download/emapperdb-5.0.2/eggnog.taxa.tar.gz
-wget http://eggnog5.embl.de/download/emapperdb-5.0.2/eggnog_proteins.dmnd.gz
-wget http://eggnog5.embl.de/download/emapperdb-5.0.2/mmseqs.tar.gz
-wget http://eggnog5.embl.de/download/emapperdb-5.0.2/pfam.tar.gz
-```
-
-2. Please download genome.fa file and species transcriptome data first  
 
 
 **1. Functional Annotation and RNA-seq analysis:**
