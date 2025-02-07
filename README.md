@@ -96,7 +96,8 @@ GENIE3 reconstructs regulatory networks by predicting directed interactions betw
 Biosynthetic gene clusters (BGCs) are responsible for the production of a variety of secondary metabolites that can include polyketides, terpenes, non-ribosomal peptides (NRPs), and others. This part of analyze the distribution of product classes from gene clusters in a genomic dataset. The primary goal of this analysis is to visualize the abundance of different biosynthetic products across the gene clusters, particularly focusing on understanding the diversity of biosynthetic gene clusters (BGCs) involved in various metabolic pathways.  
 
 
-[product_class.pdf](https://github.com/user-attachments/files/18702482/product_class.pdf)
+![image](https://github.com/user-attachments/assets/80e4c48f-a0f6-4a56-8833-0035b784cc8f)
+
 
 
 
