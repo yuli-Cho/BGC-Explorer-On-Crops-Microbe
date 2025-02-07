@@ -56,6 +56,7 @@ Gene Expression Quantification using featureCounts.
 This part performs Gene Set Enrichment Analysis (GSEA)  and GO Analysis to identify significant biological processes or pathways associated with different experimental conditions. It processes gene expression data (resdata) by filtering differentially expressed genes (DE genes) based on a log2FoldChange threshold and p-value. For each condition pair (e.g., HT0.5 vs. LT0.5), the script dynamically selects the relevant log2FoldChange and p-value columns and uses these to filter DE genes. The analysis is looped over multiple condition pairs (e.g., HT0.5_LT0.5, HT1_LT1), producing enrichment results for each.
 
 Set the condition pairs in the condition_pairs variable and execute the script to perform GSEA and visualize the results. 
+![GSEAplot](https://github.com/user-attachments/assets/f766f5da-8d79-4c69-8a3c-7918a6d2740e)
 
 
 
@@ -106,6 +107,11 @@ Biosynthetic gene clusters (BGCs) are responsible for the production of a variet
 
 
 ![image](https://github.com/user-attachments/assets/80e4c48f-a0f6-4a56-8833-0035b784cc8f)
+
+## 13.BGC Time-series analysis
+We also pay attention to the changes in BGC over time.
+![image](https://github.com/user-attachments/assets/3a267266-2f56-406b-a60a-f2066f2e9319)
+
 
 
 
