@@ -122,6 +122,60 @@ nohup deepbgc pipeline ./ref/all.gbk  -o your/output/path/ > .your/output/log_fi
 ```
 
 
+## In Rstudio
+Before running the pipeline, you need to install and load the following packages：  
+
+```
+
+library(clusterProfiler)    # For functional enrichment analysis  
+library(enrichplot)          # For visualization of enrichment results  
+library(ggplot2)             # For data visualization  
+library(data.table)          # For fast data manipulation  
+library(GO.db)               # For Gene Ontology annotations  
+library(DESeq2)              # For differential expression analysis  
+library(pathview)            # For pathway visualization  
+library(GOSemSim)            # For Gene Ontology similarity analysis  
+library(AnnotationDbi)       # For database interfacing (annotations)  
+library(org.Osativa.eg.db)   # For rice (Oryza sativa) annotations  
+library(rtracklayer)         # For working with genomic data (e.g., tracks)  
+library(Rsubread)            # For read alignment and counting  
+library(pheatmap)            # For heatmap visualizations  
+library(RColorBrewer)        # For color palettes  
+library(geneplotter)         # For gene expression plots  
+library(gplots)              # For additional plotting functionality  
+library(jsonlite)            # For working with JSON data  
+library(purrr)               # For functional programming (map, reduce, etc.)  
+library(RCurl)               # For working with URLs and HTTP requests  
+library(stringr)             # For string manipulation  
+library(dplyr)               # For data manipulation  
+library(DOSE)                # For Disease Ontology Semantic Enrichment  
+library(globaltest)          # For global test of differential expression  
+library(factoextra)          # For visualizing clustering results  
+library(FactoMineR)          # For multivariate data analysis  
+library(variancePartition)   # For variance partitioning in DE analysis  
+library(EnhancedVolcano)     # For volcano plots of differential expression  
+library(tidyr)               # For data tidying  
+library(gridExtra)           # For additional grid-based plotting functions  
+library(lme4)                # For linear mixed-effects models  
+library(Matrix)              # For sparse matrices  
+library(colorRamps)          # For color ramp generation  
+library(lmerTest)            # For mixed-effects models with p-value calculation  
+library(tibble)              # For modern data frames (tibbles)  
+library(tidyverse)           # For data manipulation and visualization (includes ggplot2, dplyr, tidyr, etc.)  
+library(tidyquant)           # For financial analysis and time series
+
+```
+
+### Required Files
+The following files should be exported from the shell and imported into R:  
+
+**all_counts.tsv:**  Raw count data for genes/features, used for differential expression analysis.  
+**eggnog.emapper.decorated.gff:**  GFF file with EggNOG orthology mapping and functional annotations.  
+**eggnog.emapper.genepred.gff:**  GFF file for gene predictions based on EggNOG mapping.  
+**eggnog.emapper.annotations:**  Functional annotations from EggNOG.  
+**eggnog.anno:**  Additional EggNOG annotations.  
+**geneid_match.tab:**  Gene IDs and corresponding annotations/mappings.  
+**all_gbk_2.bgc.tsv:**  Data on biosynthetic gene clusters (BGCs).  
 
 
 
