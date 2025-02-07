@@ -403,5 +403,82 @@ for (pair in condition_pairs) {
 ```
 
 
+## 7.Gene Set Enrichment Analysis (GSEA)  and GO Analysis
+This part performs Gene Set Enrichment Analysis (GSEA)  and GO Analysis to identify significant biological processes or pathways associated with different experimental conditions. It processes gene expression data (resdata) by filtering differentially expressed genes (DE genes) based on a log2FoldChange threshold and p-value. For each condition pair (e.g., HT0.5 vs. LT0.5), the script dynamically selects the relevant log2FoldChange and p-value columns and uses these to filter DE genes. The analysis is looped over multiple condition pairs (e.g., HT0.5_LT0.5, HT1_LT1), producing enrichment results for each.
+
+Set the condition pairs in the condition_pairs variable and execute the script to perform GSEA and visualize the results. 
+
+```
+# Get all BGC IDs
+BGC_ids <- unique(gene_in_BGC_expr_filtered$BGC_id)
+
+# Create a new data table to save the results
+result_table <- data.table(BGC_id = character(),
+                           Gene = character(),
+                           p_value = numeric(),
+                           significance = character())
+
+
+# Loop through each BGC_id
+for (BGC_id_in in BGC_ids) {
+  
+  print(paste("Processing BGC_id:", BGC_id_in))
+  
+  # Extract data corresponding to the current BGC_id
+  X <- t(gene_in_BGC_expr_filtered[BGC_id == BGC_id_in, 
+                                   .(`norm_HT0.5-2`, `norm_HT0.5-3`, `norm_HT1-3`, `norm_HT1-4`, `norm_HT24-2`, `norm_HT24-3`,
+                                     `norm_LT0.5-2`, `norm_LT0.5-3`, `norm_LT1-3`, `norm_LT1-4`, `norm_LT24-2`, `norm_LT24-4`)])
+  
+  # Set the column names of X to be the gene IDs corresponding to the current BGC_id
+  colnames(X) <- gene_in_BGC_expr_filtered[BGC_id == BGC_id_in, Geneid]
+  
+  # Loop through each column of X and perform the GlobalTest
+  for (gene_index in 1:ncol(X)) {
+    
+    # Expression data for the current gene
+    Y <- X[, gene_index, drop = FALSE]  # Use drop=FALSE to retain the data frame structure
+    
+    # Set Y as the response variable, and the other columns of X as covariates
+    X_others <- X[, -gene_index, drop = FALSE]  # Select columns other than the current gene as covariates
+    
+    # Get the current gene's name
+    gene_name <- colnames(X)[gene_index]
+    
+    # Print debug information to check X and Y
+    print(paste("Running globaltest for BGC_id:", BGC_id_in, "Gene:", gene_name))
+    
+    # Run globaltest (assumes X_others are covariates and Y is the response variable)
+    result <- gt(Y, X_others)
+    
+    # Extract p-value
+    p_value <- p.value(result)
+    
+    # Print the current p-value to check if it's valid
+    print(paste("p_value for", gene_name, ":", p_value))
+    
+    # Save the result, adding BGC_id, gene name, and p-value
+    if (!is.na(p_value) && p_value < 0.05) {
+      significance <- "significant"
+    } else {
+      significance <- "ns"  # "ns" for non-significant
+    }
+    
+    result_table <- rbind(result_table, 
+                          data.table(BGC_id = BGC_id_in, 
+                                     Gene = gene_name, 
+                                     p_value = p_value, 
+                                     significance = significance))
+  }
+  
+  print(paste0("End processing BGC_id:", BGC_id_in))
+}
+
+# Print the final result table
+print(result_table)
+
+# Get the unique BGC_ids with significant results
+unique(result_table[significance == "significant", BGC_id])
+
+```
 
 
