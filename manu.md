@@ -482,3 +482,122 @@ unique(result_table[significance == "significant", BGC_id])
 ```
 
 
+
+
+
+```
+library(GENIE3)
+
+BGC_ids <- unique(gene_in_BGC_expr_filtered$BGC_id)
+
+# Initialize a list to store the linkList_filtered for each BGC_id
+all_linkLists <- list()
+
+# Function to plot the correlation heatmap for each BGC_id
+plot_regulatory_heatmap <- function(BGC_id_in) {
+  
+  # Get the regulatory links for the selected BGC_id
+  linkList_filtered <- all_linkLists[[BGC_id_in]]
+  
+  # Ensure the filtered links are not empty and have at least two rows
+  if (nrow(linkList_filtered) < 2) {
+    print(paste("Not enough regulatory links for BGC_id:", BGC_id_in))
+    return(NULL)
+  }
+  
+  # Create a correlation matrix based on the regulatory links
+  link_matrix <- as.data.table(linkList_filtered)[, .(regulatoryGene, targetGene, weight)]
+  
+  # Reshape the data into a wide format matrix
+  link_matrix_wide <- dcast(link_matrix, regulatoryGene ~ targetGene, value.var = "weight", fill = 0)
+  
+  
+  rownames <- link_matrix_wide$regulatoryGene  # Assign rownames before dropping the column
+  link_matrix_wide <- link_matrix_wide[, -1]
+  link_matrix_wide <- as.data.frame(link_matrix_wide)
+  rownames(link_matrix_wide) <- rownames
+  
+  # Print to verify the output
+  print("Final link_matrix_wide:")
+  print(link_matrix_wide)
+  rownames(link_matrix_wide)
+  
+  # Plot heatmap
+  pheatmap(as.matrix(link_matrix_wide), 
+           cluster_rows = FALSE, 
+           cluster_cols = FALSE,
+           display_numbers = TRUE, 
+           show_rownames = TRUE,  # Ensure row names are displayed
+           show_colnames = TRUE, 
+           angle_col = 45,  # Rotate column names by 45 degrees
+           fontsize = 14,  # Increase overall font size
+           fontsize_row = 14,  # Increase row name font size
+           fontsize_col = 14,  # Increase column name font size
+           main = paste("Regulatory Network Heatmap for", BGC_id_in))
+}
+
+
+# Loop through each BGC_id for analysis
+for (BGC_id_in in BGC_ids) {
+  
+  print(paste("Processing BGC_id:", BGC_id_in))
+  
+  # Extract the gene expression matrix for the current BGC_id
+  exprMatrix <- as.matrix(gene_in_BGC_expr_filtered[BGC_id == BGC_id_in, 
+                                                    .(`norm_HT0.5-2`, `norm_HT0.5-3`, `norm_HT1-3`, `norm_HT1-4`, `norm_HT24-2`, `norm_HT24-3`,
+                                                      `norm_LT0.5-2`, `norm_LT0.5-3`, `norm_LT1-3`, `norm_LT1-4`, `norm_LT24-2`, `norm_LT24-4`)])
+  
+  # Set row names to be gene IDs
+  rownames(exprMatrix) <- gene_in_BGC_expr_filtered[BGC_id == BGC_id_in, Geneid]
+  
+  # Ensure that the expression matrix is correct
+  if (nrow(exprMatrix) == 0 || ncol(exprMatrix) == 0) {
+    print(paste("Empty expression matrix for BGC_id:", BGC_id_in))
+    next  # Skip if the matrix is empty
+  }
+  
+  # Set the seed to ensure reproducibility
+  set.seed(123)  
+  
+  # Get the number of genes
+  num_genes <- nrow(exprMatrix)
+  
+  # Ensure there are at least two genes to be used as regulators
+  if (num_genes < 2) {
+    print(paste("Not enough genes for BGC_id:", BGC_id_in))
+    next  # Skip this BGC_id if there are not enough genes
+  }
+  
+  # Use all genes as regulators
+  regulators <- rownames(exprMatrix)  
+  
+  # Run GENIE3 to infer the gene regulatory network
+  weightMatrix <- GENIE3(exprMatrix, regulators = regulators)
+  
+  # Extract regulatory links using getLinkList
+  linkList_filtered <- getLinkList(weightMatrix, threshold = 0.5)
+  
+  # Add the filtered linkList for each BGC_id to all_linkLists
+  all_linkLists[[BGC_id_in]] <- linkList_filtered
+  
+  # Check if there are enough regulatory links
+  if (nrow(linkList_filtered) < 2) {
+    print(paste("Skipping BGC_id:", BGC_id_in, "due to insufficient regulatory links"))
+    next  # Skip if there are too few regulatory links
+  }
+  
+  # Print end message for current BGC_id
+  print(paste("BGC_id:", BGC_id_in, "down"))
+  
+  # Plot the regulatory heatmap for the current BGC_id
+  plot_regulatory_heatmap(BGC_id_in)
+}
+
+# Print all regulatory links for all BGC_ids
+print(all_linkLists)
+
+
+```
+
+
+
