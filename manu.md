@@ -482,8 +482,13 @@ unique(result_table[significance == "significant", BGC_id])
 ```
 
 
+## GENIE3-Based Regulatory Network Analysis for BGCs
+Secondary metabolite biosynthetic gene clusters (BGCs) play a crucial role in producing bioactive compounds, including antibiotics, anticancer agents, and plant defense molecules. However, understanding how genes within a BGC are regulated remains a challenge. This project utilizes GENIE3, a machine-learning-based approach, to infer gene regulatory networks within BGCs based on expression data.
 
+By applying GENIE3, we can systematically predict key regulatory genes within a BGC, revealing potential transcriptional control mechanisms. This approach allows researchers to identify critical regulatory hubs that may govern the production of secondary metabolites, providing a foundation for rational metabolic engineering and functional validation.
 
+Why GENIE3?
+GENIE3 reconstructs regulatory networks by predicting directed interactions between genes using a Random Forest-based feature selection method. Unlike traditional correlation-based methods, which only capture general co-expression patterns, GENIE3 identifies potential causal relationships between transcription factors and their target genes.
 
 ```
 library(GENIE3)
