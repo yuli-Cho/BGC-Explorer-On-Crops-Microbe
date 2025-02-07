@@ -16,7 +16,7 @@ Before running the pipeline, ensure you have the following installed:
 
 **##Usage**
 ## In shell
-1. Please download the eggNOG database before you start and save it in the data folder under the eggnog-mapper software directory.\
+1. Please download the eggNOG database before you start and save it in the data folder under the eggnog-mapper software directory.
 
 ```
 wget http://eggnog5.embl.de/download/emapperdb-5.0.2/eggnog.db.gz
