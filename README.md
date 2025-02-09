@@ -25,7 +25,7 @@ deepbgc pipeline /path/to/output/generated.gbk  -o /path/to/output/deepbgc/
 ---
 
 3. R for de-BGC (differ) and dynamic  
-avalibale in `git_example.R`  
+avalibale in `git_0.1.1.R`  
 
 ## Implementary
 **The idea of ​​the shell part:** the core input is fasta file, and the output is gff file predicted and edited by eggnog.  
