@@ -1,28 +1,16 @@
-# BGC-Explorer: Comprehensive BGC Gene Analysis on crops & Microbe
+# PANX-BGC: Comprehensive BGC Gene Analysis on crops & Microbe
 
-## Overview
-**BGC-Explorer** is a bioinformatics pipeline designed to perform genome-wide analysis of **biosynthetic gene clusters (BGCs)** using the **deepbgc** tool. The project integrates genome-wide annotation with **eggNOG** and combines publicly available transcriptome data to explore the functional response of BGCs to various treatments.
+## Overview  
+**PANX-BGC** is an innovative bioinformatics pipeline that enables researchers to analyze **biosynthetic gene clusters (BGCs)** across a wide range of species in a flexible and reference-free approach. Whether you are studying plants, microbes, or any other organism, PANX-BGC allows you to predict and analyze BGCs without relying on reference genome annotations, using only fasta and transcriptome files.  
 
-## Features
-**Genome-wide BGC Identification:** Utilizes deepbgc for large-scale identification of biosynthetic gene clusters (BGCs) from genomic sequences.  
-**Genome Annotation:** Leverages eggNOG for comprehensive genome-wide functional annotation.  
-**Transcriptomic Analysis:** Combines public transcriptome data to explore differential expression of BGCs under specific treatments.  
-**Gene Interaction Analysis:** Investigates the potential interactions between BGCs, exploring whether they influence each other.  
-**Gene Family Exploration:** Identifies key genes within BGC families and assesses their importance in regulating biosynthesis.  
+PANX-BGC is unique in that it is completely independent of official genome annotations, making it an ideal solution for analyzing species with incomplete or no genome annotations. PANX-BGC offers a game-changing solution for species that have been overlooked in traditional genomics pipelines. But it doesn’t stop there – PANX-BGC excels in dynamic time series analysis, allowing you to track the dynamics of BGCs over time.  
 
+**Origin of the name PANX-BGC**  
+PAN: stands for “universal” – emphasizing the wide applicability of the pipeline to different species.  
+X: an abstract concept symbolizing flexibility – indicating that PANX-BGC can be run without a reference genome and can be dynamically analyzed at different time points, providing continuous insights into their behavior  
 
 
-
-**1. Functional Annotation and RNA-seq analysis:**
-
-This part performs the following steps:
-
-Functional Annotation using eggNOG.  
-Genome Indexing with hisat2.  
-Data Preprocessing with fastp for quality control and hisat2 for RNA-Seq read alignment.  
-Gene Expression Quantification using featureCounts.  
-
-
+## Quick Start  
 
 
 
