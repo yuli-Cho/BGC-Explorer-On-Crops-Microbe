@@ -10,7 +10,7 @@ X: an abstract concept symbolizing flexibility – indicating that x-BGC can be 
 ## Quick Start  
 The whole process is divided into three parts:  
 
-1. RNASEQ   
+1. RNAseq Analysis
 In shell:  
 ```
 bash  bgc_rnaseq.sh /path/to/eggnog/database/   /path/to/reference/genome/reference_genome.fa   /path/to/output/   /path/to/scripts/build_em_genbank.py   /path/to/RNAseq/fq/  
