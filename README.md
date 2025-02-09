@@ -27,7 +27,7 @@ deepbgc pipeline /path/to/output/generated.gbk  -o /path/to/output/deepbgc/
 3. R for de-BGC (differ) and dynamic  
 avalibale in `git_example.R`  
 
-## implementary
+## Implementary
 **The idea of ​​the shell part:** the core input is fasta file, and the output is gff file predicted and edited by eggnog.  
 **The operation of the shell part:** Please run the `bgc_rnaseq.sh` script. Before using it, please make sure that the necessary software has been installed: `deepbgc, eggNOG, Python, fastp, hisat2, samtools, featureCounts, eggNOG-mapper, seqkit`, and `build_em_genbank.py` needs to be saved before running.  
 
@@ -84,7 +84,8 @@ GENIE3 reconstructs regulatory networks by predicting directed interactions betw
 
 ## 5.Visualizing Differential BGC Distribution on Chromosomes  
 we leverage the factoextra package in R to visualize the distribution of Biosynthetic Gene Clusters (BGCs) that exhibit differential patterns across various chromosomes. The factoextra package, known for enhancing the visualization of multivariate data analyses such as PCA and clustering methods,we aim to gain insights into the genomic landscape of BGCs under specific conditions.  
-![image](https://github.com/user-attachments/assets/a26005e3-b647-4d01-977d-1768865bf2ff)
+![image](https://github.com/user-attachments/assets/7bbbc8ba-2378-484e-94dd-429413fd3943)
+
 
 
 ## 6.Gene Product Class Distribution  
